@@ -54,6 +54,18 @@ public:
 		return e;
 	}
 
+	ObjectPool<Entity>::iterator SpawnColliderBox(float x, float y, float w, float h)
+	{
+		auto e = entities.push();
+		e->transform = transforms.push();
+		e->transform->setLocalPosition(vec2{ x,y });
+
+		vec2 verts[] = { vec2{0, 0}, vec2{0, 10}, vec2{10,10},vec2{10,0} };
+
+		e->collider = colliders.push(Collider (verts,4));
+		e->transform->setGlobalScale(vec2{ w,h });
+		return e;
+	} 
 	ObjectPool<Entity>::iterator spawnBullet(unsigned sprite, vec2 pos, vec2 dim, float ang, float impulse, unsigned faction)
 	{
 		auto e = entities.push();

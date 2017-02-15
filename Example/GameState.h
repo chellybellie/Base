@@ -26,7 +26,7 @@ public:
 	virtual void init()
 	{
 		spr_bullet = sfw::loadTextureMap("../res/bullet.png");
-		spr_space = sfw::loadTextureMap("../res/space.jpg"); //background 
+		spr_space = sfw::loadTextureMap("../res/mockup_2.png"); //background 
 		spr_ship = sfw::loadTextureMap("../res/ship.png");
 		spr_roid = sfw::loadTextureMap("../res/rock.png");
 		spr_font = sfw::loadTextureMap("../res/font.png",32,4);
@@ -40,15 +40,22 @@ public:
 		// setup a default camera
 		currentCamera = factory.spawnCamera(800, 600, 1);
 		currentCamera->transform->setGlobalPosition(vec2{ 400, 300 });
-
+		currentCamera->transform->setLocalScale(vec2{ 1.f,1.f });
 		// call some spawning functions!
 		factory.spawnStaticImage(spr_space, 0, 0, 800, 600);
 
-		factory.spawnPlayer(spr_ship, spr_font);
-		factory.spawnAsteroid(spr_roid);
-		factory.spawnAsteroid(spr_roid);
-		factory.spawnAsteroid(spr_roid);
-		factory.spawnAsteroid(spr_roid);
+		//factory.spawnPlayer(spr_ship, spr_font);
+		//factory.spawnAsteroid(spr_roid);
+		//factory.spawnAsteroid(spr_roid);
+		//factory.spawnAsteroid(spr_roid);
+		//factory.spawnAsteroid(spr_roid);
+
+		factory.SpawnColliderBox(-400, -300, 2, 11.5); ////bottom left fence////
+		factory.SpawnColliderBox(-310, -300, 75, 11.5); ////bottome fence////
+		factory.SpawnColliderBox(-289.5, -89, 15.5, 15); ////blue house ////
+		factory.SpawnColliderBox(0, 150, 16, 12); ////green house ////
+		factory.SpawnColliderBox(240, 150, 11, 12); ////red house ////
+
 	}
 
 	virtual void stop()
