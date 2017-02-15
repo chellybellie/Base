@@ -26,7 +26,7 @@ public:
 	virtual void init()
 	{
 		spr_bullet = sfw::loadTextureMap("../res/bullet.png");
-		spr_space = sfw::loadTextureMap("../res/space.jpg");
+		spr_space = sfw::loadTextureMap("../res/space.jpg"); //background 
 		spr_ship = sfw::loadTextureMap("../res/ship.png");
 		spr_roid = sfw::loadTextureMap("../res/rock.png");
 		spr_font = sfw::loadTextureMap("../res/font.png",32,4);
