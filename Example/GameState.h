@@ -19,7 +19,7 @@
 class GameState : public BaseState
 {
 	Factory factory;
-	unsigned spr_space, spr_ship, spr_bullet, spr_roid, spr_font;
+	unsigned spr_space, spr_ship, spr_bullet, spr_roid, spr_font, Main_sara;
 	ObjectPool<Entity>::iterator currentCamera;
 
 public:
@@ -30,6 +30,7 @@ public:
 		spr_ship = sfw::loadTextureMap("../res/ship.png");
 		spr_roid = sfw::loadTextureMap("../res/rock.png");
 		spr_font = sfw::loadTextureMap("../res/font.png",32,4);
+		Main_sara = sfw::loadTextureMap("../res/sara-cal-actual.png", 5, 2);
 	}
 
 	virtual void play()
@@ -44,11 +45,11 @@ public:
 		// call some spawning functions!
 		factory.spawnStaticImage(spr_space, 0, 0, 800, 600);
 
-		//factory.spawnPlayer(spr_ship, spr_font);
-		//factory.spawnAsteroid(spr_roid);
-		//factory.spawnAsteroid(spr_roid);
-		//factory.spawnAsteroid(spr_roid);
-		//factory.spawnAsteroid(spr_roid);
+		factory.spawnPlayer(Main_sara, spr_font);
+		factory.spawnAsteroid(spr_roid);
+		factory.spawnAsteroid(spr_roid);
+		factory.spawnAsteroid(spr_roid);
+		factory.spawnAsteroid(spr_roid);
 
 		factory.SpawnColliderBox(-400, -300, 2, 11.5); ////bottom left fence////
 		factory.SpawnColliderBox(-310, -300, 75, 11.5); ////bottome fence////
@@ -152,7 +153,7 @@ public:
 		// draw sprites
 		for each(auto &e in factory)
 			if (e.transform && e.sprite)
-				e.sprite->draw(&e.transform, cam);
+				e.sprite->draw(&e.transform, cam, 0);
 
 		// draw text
 		for each(auto &e in factory)

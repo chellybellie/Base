@@ -26,12 +26,20 @@ public:
 		return  mat3::translate(offset) * mat3::rotate(angle) * mat3::scale(dimensions);
 	}
 
-	void draw(const Transform *T, const mat3 &C) const
+	void draw(const Transform *T, const mat3 &C, int index) const
 	{
 		mat3 glob = C * T->getGlobalTransform() * getDrawMatrix();
-		sfw::drawTextureMatrix3(sprite_id, frame_id, tint, glob.v, 0);
+		sfw::drawTextureMatrix3(sprite_id, index, tint, glob.v, 0);
 	}
 };
 
 }
+
+
+enum AmimationState
+{
+	idle, move, attack
+};
+
+
 //sfw::drawTE
